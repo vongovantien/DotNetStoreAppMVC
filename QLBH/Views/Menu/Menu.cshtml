@@ -1,0 +1,15 @@
+﻿
+<div class="dropdown">
+    <div class="dropdown-menu">
+        <li class="list-group-item">
+            <a href="@Url.Action("Index", "Home")">Tat ca san pham</a>
+        </li>
+        @foreach (var item in ViewBag.LoaiSP)
+        {
+            <li class="list-group-item">
+                <a class="" href="@Url.Action("Index", "Home", new { maSP = item.Key})">@item.Value</a>
+            </li>
+
+        }
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model QLBH.Models.SanPham
+@using QLBH.Helpers
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-danger text-center">Chi tiết sản phẩm</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donvitinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donvitinh)
+        </dd>
+        <dd>
+            @Html.DisplayNameFor(model => model.Dongia)
+        </dd>
+        <dt>
+            @String.Format("{0:0,### Đồng}", Model.Dongia)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiSP.TenLoaiSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSP.TenLoaiSP)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhSP)
+        </dt>
+
+        <dd>
+            @Html.Image("../../" + Model.HinhSP, " ", "120", "60")
+        </dd>
+        <dd>
+            <br />
+            <a class="btn btn-info" href="@Url.Action("AddToCart", "giohang", new { maSP = Model.MaSP})"><span class="glyphicon-shopping-cart"></span>Thêm vào giỏ hàng</a>
+            <a class="text-info" href="">Quay lại</a>
+        </dd>
+    </dl>
+</div>

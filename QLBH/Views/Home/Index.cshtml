@@ -1,0 +1,16 @@
+﻿@model IEnumerable<QLBH.Models.SanPham>
+@using QLBH.Helpers
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-12 table-bordered">
+            @Html.Image("../" + item.HinhSP, " ", "60", "100")
+            <h3 class="text-info">
+                @Html.DisplayFor(m => item.TenSP)
+            </h3>
+            <p class="text-danger">@Html.DisplayFor(m => item.Dongia)</p>
+            <a class="btn btn-info" href="@Url.Action("Details", "SanPham", new { id = item.MaSP })">Chi tiết</a>
+        </div>
+    }
+</div>

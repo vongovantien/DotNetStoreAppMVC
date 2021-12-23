@@ -1,0 +1,64 @@
+﻿@model List<QLBH.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gio hang</h2>
+@if(Model == null)
+{
+    <p class="text-info text-center">Chua co san pham nao trong gio hang</p>
+}
+else
+{
+<div class="row">
+    <table class="table table-striped">
+        <tr>
+            <th>Ma Hang</th>
+            <th>Ten Hang</th>
+            <th>So Luong</th>
+            <th>Don Gia</th>
+            <th>Thanh Tien</th>
+            <th></th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td>
+                    <form action="href=" @Url.Action("Update") " method="get">
+                        <input type="number" min="1" name="txtSoLuong" value="@item.SoLuong" />
+                        <input type="submit" class="btn btn-success" value="Cap nhat" />
+                        <input type="hidden" name="maSP" value="@item.MaSP" />
+                    </form>
+                </td>
+                <td>@item.DonGia</td>
+                <td>@item.ThanhTien</td>
+                <td>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", new { maSP = item.MaSP})" onclick="">Xoa</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <th></th>
+            <th></th>
+            <th>@Model.Sum(m => m.SoLuong)</th>
+            <th>Tong tien</th>
+            <th>@Model.Sum(m => m.ThanhTien)</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <form action="" method="get">
+                    Thong tin dat hang
+                    <input type="text" name="Email" value="Email"/>
+                    <input type="text" name="Phone" value="Phone"/>
+                    <input type="submit" class="btn btn-info"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+}
